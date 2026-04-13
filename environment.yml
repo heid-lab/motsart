@@ -1,0 +1,24 @@
+name: motsart
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - ipykernel
+  - numpy
+  - pandas
+  - pip
+  - rdkit
+  - tqdm
+  - xtb
+  - ase
+  - qcelemental
+  - pip:
+    - hydra-zen
+    - lightning
+    - torchdiffeq
+    - wandb
+    - pymatgen
+    - einops
+    - rich
+    - graphrc
+    - racerts
