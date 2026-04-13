@@ -23,11 +23,11 @@ export OMPI_MCA_osc=^ucx
 eval "$(mamba shell hook --shell bash)"
 mamba activate motsart
 
-python -m motsart.complex_finder.complex_finder env=tetrazine env.rxn_num=1 afir_cfg=leon optim_cfg=leon
-python -m motsart.path_guessers.rmsd_pp.rmsd_pp_reaction_path_guesser env=tetrazine env.rxn_num=1
-python -m motsart.path_guessers.ts_conf_sampler env=tetrazine env.rxn_num=1
+python -m motsart.complex_finder.complex_finder env=cluster env.rxn_num=1 afir_cfg=local optim_cfg=local
+python -m motsart.path_guessers.rmsd_pp.rmsd_pp_reaction_path_guesser env=cluster env.rxn_num=1
+python -m motsart.path_guessers.ts_conf_sampler env=cluster env.rxn_num=1
 python -m motsart.validator.base_validator \
-    env=azide \
+    env=cluster \
     validator_cfg=cluster \
     'validator_cfg.path_guessers_to_validate=[learning]' \
     validator=dft \

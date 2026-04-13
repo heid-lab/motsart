@@ -2,7 +2,6 @@
 #SBATCH --job-name=validate_goflow
 #SBATCH --output=slurm/slurm-%A.out
 #SBATCH --error=slurm/slurm-%A.out
-#SBATCH --partition=perform
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=2
 ########### CHANGE ARRAY SIZE ###########
