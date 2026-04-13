@@ -1,3 +1,5 @@
+<img width="2079" height="955" alt="motsart-overview" src="https://github.com/user-attachments/assets/d08eb38e-7b2c-4ba2-848d-34c5ea3681db" />
+
 # Installation
 
 moTSart uses conda (xTB is distributed via conda-forge). Installing Miniforge is the recommended setup.
