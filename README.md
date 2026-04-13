@@ -4,7 +4,7 @@
 
 moTSart uses conda (xTB is distributed via conda-forge). Installing Miniforge is the recommended setup.
 
-Install Miniforge on Linux:
+0. Install Miniforge on Linux:
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
 bash Miniforge3-Linux-x86_64.sh
@@ -12,7 +12,7 @@ bash Miniforge3-Linux-x86_64.sh
 exec bash
 ```
 
-Install Miniforge on macOS (Apple Silicon):
+0. Install Miniforge on macOS (Apple Silicon):
 ```bash
 curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh
 chmod +x Miniforge3-MacOSX-arm64.sh
@@ -20,7 +20,13 @@ bash Miniforge3-MacOSX-arm64.sh
 exec zsh
 ```
 
-Create environment, activate it, and install moTSart in editable mode:
+1. Clone the moTSart repository:
+  ```bash
+  git clone https://github.com/heid-lab/motsart.git
+  cd motsart
+  ```
+
+2. Create environment, activate it, and install moTSart in editable mode:
 ```bash
 conda env create -f environment.yml
 conda activate motsart
@@ -48,11 +54,11 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv t
 ```
 
 # Usage
+Please check out the documentation for a comprehensive user guide.
 
-## Add modules
+## Configure
 
-To add a reaction path guesser, add a module under `src/motsart/path_guessers` that implements it.
-See `src/motsart/path_guessers/rmsd_pp/rmsd_pp_reaction_path_guesser.py` for an example implementation.
+We use hydra-zen for managing configurations directly in python configuration files. Before running the pipeline, make sure you set all the paths in the environment configuration file under `src/motsart/conf.py`. This includes the paths to software such as xTB or ORCA, as well as the output directory where results will be written. These configuration files for the modules `complex_finder`, `path_guessers`, `validator`, and `learning` are found in their respective module folders and are named `conf.py`
 
 ## Run
 
@@ -62,18 +68,3 @@ See `src/motsart/path_guessers/rmsd_pp/rmsd_pp_reaction_path_guesser.py` for an 
 # Analysis
 
 Pipeline artifacts (geometries, paths, validation outputs) are written per reaction under the configured results directory.
-
-Compute stats (example):
-```bash
-python -m motsart.validator.compute_stats \
-  --cluster-folder results \
-  --learning-folder results_goflow \
-  --validator DFTValidator \
-  --output-csv stats.csv \
-  --cluster-ts-method racer_ts \
-  --al-ts-method learning \
-  --mode both
-```
-
-# Documentation
-Check out the documentation for guides and the paper reproduction workflow.

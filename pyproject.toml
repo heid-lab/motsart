@@ -19,3 +19,6 @@ where = ["src"]
 
 [tool.setuptools.dynamic]
 version = { attr = "motsart.__version__" }
+
+[project.urls]
+"Homepage" = "https://github.com/heid-lab/motsart"

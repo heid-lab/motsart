@@ -3,10 +3,12 @@ channels:
   - conda-forge
 dependencies:
   - python=3.12
+  - pip
   - ipykernel
   - numpy
+  - scipy
+  - matplotlib
   - pandas
-  - pip
   - rdkit
   - tqdm
   - xtb
@@ -14,8 +16,6 @@ dependencies:
   - qcelemental
   - pip:
     - hydra-zen
-    - lightning
-    - torchdiffeq
     - wandb
     - pymatgen
     - einops
