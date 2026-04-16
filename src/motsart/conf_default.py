@@ -89,7 +89,7 @@ class AFIRPathGuesserParams:
         fc_upper_bound: Upper bound for force constant binary search.
         fc_init_upper: Initial upper bound for the first binary search step.
         fc_binary_search_depth: Number of binary search iterations for optimal force constant.
-        num_ts_for_validation: Number of TS candidates to forward to validation.
+        num_ts_for_validation: Number of Reactant Complexes (R+P) / TS candidates to forward to path guesser and finally validation.
     """
     fc_lower_bound: float = 0.0
     fc_upper_bound: float = 3.0

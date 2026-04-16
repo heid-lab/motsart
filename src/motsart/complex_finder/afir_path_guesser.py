@@ -119,17 +119,17 @@ class AFIRReactionPathGuesser:
         filter_P = (r_energy_P < ts_energy_P) & (p_energy_P < ts_energy_P)
         
         rc_files_P = [file for p, file in enumerate(rc_files_P) if filter_P[p]]
-        energies_P_I = [energies_I for i, energies_I in enumerate(energies_P_I) if filter_P[i]] # (P, I)
-        mol_P_I_N_3 = [mol_I_N_3 for i, mol_I_N_3 in enumerate(mol_P_I_N_3) if filter_P[i]] # (P, I, N, 3)
+        energies_P_I = [energies_I for i, energies_I in enumerate(energies_P_I) if filter_P[i]]
+        mol_P_I_N_3 = [mol_I_N_3 for i, mol_I_N_3 in enumerate(mol_P_I_N_3) if filter_P[i]]
         
         # ----- Step 2: filter population. Keep those with lowest TS energy -----
         ts_energy_P = np.array([np.max(energies_I) for energies_I in energies_P_I])
         
-        sorted_pop_idx_Pf = np.argsort(ts_energy_P)[:self.cfg.num_ts_for_validation] # (Pf)
+        sorted_pop_idx_Pf = np.argsort(ts_energy_P)[:self.cfg.num_ts_for_validation]
 
         rc_files_Pf = [rc_files_P[idx] for idx in sorted_pop_idx_Pf]
-        mol_Pf_I_N_3 = [mol_P_I_N_3[idx] for idx in sorted_pop_idx_Pf] # # (Pf, I, N, 3)
-        e_Pf_I = [energies_P_I[idx] for idx in sorted_pop_idx_Pf] # (Pf, I)
+        mol_Pf_I_N_3 = [mol_P_I_N_3[idx] for idx in sorted_pop_idx_Pf]
+        e_Pf_I = [energies_P_I[idx] for idx in sorted_pop_idx_Pf]
 
         # ----- Step 3: filter path. Take TS structure -----
         ts_idx_Pf = [np.argmax(energies_I) for energies_I in e_Pf_I]
