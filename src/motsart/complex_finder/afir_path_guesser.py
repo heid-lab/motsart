@@ -41,7 +41,7 @@ class AFIRReactionPathGuesser:
         self.cfg = cfg
         self.bond_form_break_constraints = get_bond_forming_breaking_constrains(rxn_data, prod_mol_conf_C_N_3[0])
     
-    def endpoint_is_product(self, atoms_N, mol_N_3, use_chirality=True, use_adj_approach=True): # TODO: make use_adj_approach a hyperparam
+    def endpoint_is_product(self, atoms_N, mol_N_3, use_chirality=True, use_adj_approach=True):
         mol_relaxed = get_rdkit_mol_from_xyz(mol_N_3, atoms_N, use_chirality, charge=self.rxn_data.charge)
         if mol_relaxed is None:
             print("mol_relaxed is None")
@@ -71,9 +71,6 @@ class AFIRReactionPathGuesser:
         """
         - Binary search the fc for all reactant complexes.
         - Return the highest energy structures
-        
-        todo later: swap for loops to terminate earlier if lower-bound fc higher than other's upper-bound
-        todo later: compute single-point g-xtb energies along path from max-energy to i-1, i+1, take max energy structure (https://github.com/stefanbringuier/g-xtb-ase)
         """        
         reactive_complex_files_C = self.path_handler.get_reactant_complexes_xyz_files()
         
@@ -96,8 +93,9 @@ class AFIRReactionPathGuesser:
 
             assert self.rxn_data.atoms_mn_N == valid_atoms_N
 
-            #write_pop_to_xyzs(valid_path_I_N_3, valid_atoms_N, out_path=self.path_handler.ts_paths / f'{rc_filestem}_fc_{lowest_fc:.6f}')
-            #save_energies_plot(valid_path_energies_I, np.argmax(valid_path_energies_I), self.path_handler.ts_to_validate / f'{rc_filestem}_energies.png')
+            # Optional for debugging purposes
+            # write_pop_to_xyzs(valid_path_I_N_3, valid_atoms_N, out_path=self.path_handler.ts_paths / f'{rc_filestem}_fc_{lowest_fc:.6f}')
+            # save_energies_plot(valid_path_energies_I, np.argmax(valid_path_energies_I), self.path_handler.ts_to_validate / f'{rc_filestem}_energies.png')
         
         if len(rc_files_P) == 0:
             print(f"No product found for rxn id {self.rxn_data.rxn_id}!")
@@ -108,8 +106,6 @@ class AFIRReactionPathGuesser:
         for i, rc_file in enumerate(rc_files_Pf):
             write_xyz(self.rxn_data.atoms_mn_N, ts_Pf_N_3[i], self.path_handler.ts_to_validate / rc_file.name)
             write_xyz(self.rxn_data.atoms_mn_N, p_Pf_N_3[i], self.path_handler.p_dir / rc_file.name)
-
-    # TODO: def filter_products_with_wrong_chirality(self): 
     
     def filter_with_ts_vetting_heuristics(self, mol_P_I_N_3: List[np.ndarray], energies_P_I: List[np.ndarray], rc_files_P: List[Path]): # dims (P, I, N, 3), (P, I)
         """

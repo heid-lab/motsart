@@ -9,7 +9,6 @@ import time
 import os
 import random
 import subprocess
-import pandas as pd
 import tempfile
 import shutil
 from typing import Any, List, Optional, Set, Tuple, Dict
@@ -644,28 +643,6 @@ def embed_conformers(
     return _embed_via_forcefield(mol, n_confs, seed)
 
 
-"""def embed_conformers(
-    mol: Chem.Mol,
-    seed=42,
-    n_confs: int = 1,
-    useExpTorsionAnglePrefs: bool = True,
-) -> List[int]:
-    params = AllChem.ETKDGv3()
-    params.useExpTorsionAnglePrefs = useExpTorsionAnglePrefs
-    params.useBasicKnowledge = True
-    params.useRandomCoords = True
-    params.randomSeed = seed
-    params.pruneRmsThresh = -1
-    
-    conf_ids = AllChem.EmbedMultipleConfs(
-        mol,
-        numConfs=n_confs,
-        params=params,
-    )
-    
-    return conf_ids"""
-
-
 def get_rdkit_reactant_conformers(rxn_data: ReactionData, n_confs: int, seed: int, save_dir: Path):
     print("Conformer generation ...")
     start_time = time.perf_counter()
@@ -824,13 +801,11 @@ def p_idx_to_r_idx(p_idx: int, rxn_data: ReactionData):
 
 def get_bond_forming_breaking_constrains(rxn_data: ReactionData, mol_N_3: np.ndarray = None) -> Dict:
     """
-    TODO: currently does not consider breaking bonds
     Get a few product geometries with EA pipeline. Avg over breaking bond lengths.
-
     if mol_N_3 is provided use the distances from that molecule, otherwise the vdw radii sum of forming-bond atoms
     """
     bond_form_break_constraints = {}
-    for bonds_mn_Bf in [rxn_data.formed_bonds_mn_Bf]: #, rxn_data.broken_bonds_idx_Bf]:
+    for bonds_mn_Bf in [rxn_data.formed_bonds_mn_Bf]:
         for a1_mn, a2_mn in bonds_mn_Bf:
             a1_mn_ord, a2_mn_ord = rxn_data.mn_order[a1_mn], rxn_data.mn_order[a2_mn]
             if mol_N_3 is None:
@@ -861,7 +836,7 @@ def xtb_optimize_with_applied_potentials(
     - output_dir: Directory to save the output log file. Defaults to current directory.
 
     Returns:
-    str: Path to the XTB optimization log file.
+        str: Path to the XTB optimization log file.
     """
     output_dir = output_dir or Path.cwd()
     rc_filename = Path(reactive_complex_xyz_file).stem

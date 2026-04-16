@@ -54,7 +54,7 @@ def ts_sampling_and_xtb_energy_eval(rxn_data, mol_file, path_handler: PathHandle
             file_name=str(mol_file), 
             charge=rxn_data.charge,
             reacting_atoms=reacting_atoms,
-            conf_factor=40, # TODO: put into config
+            conf_factor=40,
         )
         # Sort by xTB energies
         mol_C_N_3 = get_sorted_conformer_coords(ts_conformers_mol)
@@ -62,8 +62,8 @@ def ts_sampling_and_xtb_energy_eval(rxn_data, mol_file, path_handler: PathHandle
         sort_idx = np.argsort(xtb_energies_C)
         
         # xTB relax population
-        mols_best_B_N_3 = mol_C_N_3[sort_idx[:8]] # TODO: put into config
-        mols_best_B_N_3, energies_B = relax_pop_with_constraint(rxn_data, mols_best_B_N_3, path_handler, iter_n=None, use_mol_dist=True, force_const=.1) # TODO: put into config
+        mols_best_B_N_3 = mol_C_N_3[sort_idx[:8]]
+        mols_best_B_N_3, energies_B = relax_pop_with_constraint(rxn_data, mols_best_B_N_3, path_handler, iter_n=None, use_mol_dist=True, force_const=.1)
         if len(energies_B) == 0:
             print(f"Relaxing population only returned formed bonds. Skipping rxn {rxn_data.rxn_id}, file: {mol_file}")
             return None
@@ -108,7 +108,6 @@ def ts_conf_sampler_task(env: EnvironmentConfig):
 
 
 if __name__ == '__main__':
-    #import motsart.learning.conf
     store(
         ts_conf_sampler_task,
         name="ts_conf_sampler_root",

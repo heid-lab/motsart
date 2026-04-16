@@ -209,7 +209,7 @@ class PySCFValidator(BaseValidator):
             'optimized_geometry': opt_coords_ang,
         }
         
-        is_valid_ts = (neg_imag_cnt == 1) # and converged. TODO: adapt so that max(|step|) and rms(step) also are in converged regime. Check why they currently aren't!
+        is_valid_ts = (neg_imag_cnt == 1)
         
         if not is_valid_ts:
             print(f"Warning: Found {neg_imag_cnt} imaginary frequencies, converged: {converged}")
