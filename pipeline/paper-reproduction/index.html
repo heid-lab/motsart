@@ -802,10 +802,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inputs-you-need" class="md-nav__link">
+  <a href="#inputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inputs You Need
+        Inputs
       
     </span>
   </a>
@@ -816,7 +816,7 @@
   <a href="#phase-a-run-baseline-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase A: Run Baseline Pipeline
+        Phase A: Run baseline pipeline
       
     </span>
   </a>
@@ -827,7 +827,7 @@
   <a href="#phase-b-build-learning-data-pickles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase B: Build Learning Data Pickles
+        Phase B: Build learning data pickles
       
     </span>
   </a>
@@ -838,7 +838,7 @@
   <a href="#phase-c-import-model-generated-ts-samples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase C: Import Model-Generated TS Samples
+        Phase C: Import model-generated TS samples
       
     </span>
   </a>
@@ -849,7 +849,7 @@
   <a href="#phase-d-validate-imported-ts-guesses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase D: Validate Imported TS Guesses
+        Phase D: Validate imported TS guesses
       
     </span>
   </a>
@@ -860,7 +860,7 @@
   <a href="#phase-e-compute-final-stats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase E: Compute Final Stats
+        Phase E: Compute final stats
       
     </span>
   </a>
@@ -871,7 +871,7 @@
   <a href="#quick-sanity-checklist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Sanity Checklist
+        Quick sanity checklist
       
     </span>
   </a>
@@ -2299,10 +2299,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inputs-you-need" class="md-nav__link">
+  <a href="#inputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inputs You Need
+        Inputs
       
     </span>
   </a>
@@ -2313,7 +2313,7 @@
   <a href="#phase-a-run-baseline-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase A: Run Baseline Pipeline
+        Phase A: Run baseline pipeline
       
     </span>
   </a>
@@ -2324,7 +2324,7 @@
   <a href="#phase-b-build-learning-data-pickles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase B: Build Learning Data Pickles
+        Phase B: Build learning data pickles
       
     </span>
   </a>
@@ -2335,7 +2335,7 @@
   <a href="#phase-c-import-model-generated-ts-samples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase C: Import Model-Generated TS Samples
+        Phase C: Import model-generated TS samples
       
     </span>
   </a>
@@ -2346,7 +2346,7 @@
   <a href="#phase-d-validate-imported-ts-guesses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase D: Validate Imported TS Guesses
+        Phase D: Validate imported TS guesses
       
     </span>
   </a>
@@ -2357,7 +2357,7 @@
   <a href="#phase-e-compute-final-stats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase E: Compute Final Stats
+        Phase E: Compute final stats
       
     </span>
   </a>
@@ -2368,7 +2368,7 @@
   <a href="#quick-sanity-checklist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Sanity Checklist
+        Quick sanity checklist
       
     </span>
   </a>
@@ -2398,36 +2398,36 @@
 <h1 id="paper-reproduction-workflow">Paper Reproduction Workflow<a class="headerlink" href="#paper-reproduction-workflow" title="Permanent link">&para;</a></h1>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>Compare TS methods from path guesser (for example <code>racer_ts</code>) against model-generated TS guesses (<code>learning</code>) on the same reaction set and validator settings.</p>
-<h2 id="inputs-you-need">Inputs You Need<a class="headerlink" href="#inputs-you-need" title="Permanent link">&para;</a></h2>
+<h2 id="inputs">Inputs<a class="headerlink" href="#inputs" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Reaction CSV in moTSart format (no header, <code>rxn_id,rxn_smiles</code>)</li>
 <li>Path guesser results folder (output from Step 1 to Step 3)</li>
 <li>Model-generated TS samples (or a script that fetches them)</li>
 <li>Cluster/local run scripts adjusted to your environment paths</li>
 </ul>
-<h2 id="phase-a-run-baseline-pipeline">Phase A: Run Baseline Pipeline<a class="headerlink" href="#phase-a-run-baseline-pipeline" title="Permanent link">&para;</a></h2>
+<h2 id="phase-a-run-baseline-pipeline">Phase A: Run baseline pipeline<a class="headerlink" href="#phase-a-run-baseline-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Choose your execution script. Local: <code>bash complex_and_ts_search_local.sh</code>. Cluster: <code>sbatch complex_and_ts_search_cpu.sh</code>.</li>
 <li>Confirm baseline validation files exist under: <code>results*/R*/validation/{method}/validation_*.csv</code></li>
 </ol>
-<h2 id="phase-b-build-learning-data-pickles">Phase B: Build Learning Data Pickles<a class="headerlink" href="#phase-b-build-learning-data-pickles" title="Permanent link">&para;</a></h2>
+<h2 id="phase-b-build-learning-data-pickles">Phase B: Build learning data pickles<a class="headerlink" href="#phase-b-build-learning-data-pickles" title="Permanent link">&para;</a></h2>
 <p>Use one of:</p>
 <ul>
 <li><code>bash create_fine_tune_dft_data.sh</code></li>
 <li><code>bash create_preprocess_rtsp_pretrain_data.sh</code></li>
 </ul>
 <p>Before running, adjust script variables (<code>RESULTS_FOLDER</code>, <code>RXN_CSV</code>, <code>OUT_DIR</code>, split ratios) to your paths. Then on the GPU cluster, fine-tune the model on the data and generate samples for the test set.</p>
-<h2 id="phase-c-import-model-generated-ts-samples">Phase C: Import Model-Generated TS Samples<a class="headerlink" href="#phase-c-import-model-generated-ts-samples" title="Permanent link">&para;</a></h2>
+<h2 id="phase-c-import-model-generated-ts-samples">Phase C: Import model-generated TS samples<a class="headerlink" href="#phase-c-import-model-generated-ts-samples" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>fetch_and_push_data_pkl_to_results.sh
 </code></pre></div>
 <p>Adjust variables in that script so imported samples end up in your target <code>learning</code> results folder structure (for example <code>results_goflow/&lt;project&gt;/R*/ts/learning/ts_to_validate/</code>).</p>
-<h2 id="phase-d-validate-imported-ts-guesses">Phase D: Validate Imported TS Guesses<a class="headerlink" href="#phase-d-validate-imported-ts-guesses" title="Permanent link">&para;</a></h2>
+<h2 id="phase-d-validate-imported-ts-guesses">Phase D: Validate imported TS guesses<a class="headerlink" href="#phase-d-validate-imported-ts-guesses" title="Permanent link">&para;</a></h2>
 <p>Run validator on imported AL guesses:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sbatch<span class="w"> </span>validation_goflow.sh
 </code></pre></div>
 <p>Edit <code>RXN_FOLDER</code>, <code>CSV_FILE</code>, array settings, and resource flags for your cluster.</p>
-<h2 id="phase-e-compute-final-stats">Phase E: Compute Final Stats<a class="headerlink" href="#phase-e-compute-final-stats" title="Permanent link">&para;</a></h2>
+<h2 id="phase-e-compute-final-stats">Phase E: Compute final stats<a class="headerlink" href="#phase-e-compute-final-stats" title="Permanent link">&para;</a></h2>
 <p>Example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>motsart.validator.compute_stats<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--cluster-folder<span class="w"> </span>/path/to/baseline_results<span class="w"> </span><span class="se">\</span>
@@ -2438,7 +2438,7 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--al-ts-method<span class="w"> </span>learning<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--mode<span class="w"> </span>both
 </code></pre></div></p>
-<h2 id="quick-sanity-checklist">Quick Sanity Checklist<a class="headerlink" href="#quick-sanity-checklist" title="Permanent link">&para;</a></h2>
+<h2 id="quick-sanity-checklist">Quick sanity checklist<a class="headerlink" href="#quick-sanity-checklist" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Path guesser and (learned) model inference runs use the same reaction IDs</li>
 <li>Validator choice is consistent across compared runs (<code>xtb</code> or <code>dft</code>)</li>
