@@ -28,7 +28,7 @@ graph LR
 
 ## Quick Links
 
-- [Installation](getting-started/installation.md) - Set up your environment
+- [Installation](getting-started/installation.md)
 - [Quick Start](getting-started/quickstart.md) - Run your first reaction
 - [Configuration](configuration/index.md) - Hydra-Zen config system
 - [Cluster & HPC](cluster/index.md) - Running on SLURM clusters
