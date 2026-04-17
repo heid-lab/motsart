@@ -54,7 +54,7 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv t
 ```
 
 # Usage
-Please check out the documentation for a comprehensive user guide.
+Please check out the documentation for a comprehensive user guide: [heid-lab.github.io/motsart](https://heid-lab.github.io/motsart/)
 
 ## Configure
 
