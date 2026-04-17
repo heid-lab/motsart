@@ -33,5 +33,4 @@ graph LR
 - [Configuration](configuration/index.md) - Hydra-Zen config system
 - [Cluster & HPC](cluster/index.md) - Running on SLURM clusters
 - [Paper Reproduction Workflow](pipeline/paper-reproduction.md) - Environment-agnostic reproduction template
-- [Contributing](contributing.md) - Local docs quality checks
 - [API Reference](reference/) - Auto-generated module documentation
