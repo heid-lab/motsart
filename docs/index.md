@@ -32,5 +32,5 @@ graph LR
 - [Quick Start](getting-started/quickstart.md) - Run your first reaction
 - [Configuration](configuration/index.md) - Hydra-Zen config system
 - [Cluster & HPC](cluster/index.md) - Running on SLURM clusters
-- [Paper Reproduction Workflow](pipeline/paper-reproduction.md) - Environment-agnostic reproduction template
+- [Paper Reproduction Workflow](pipeline/paper-reproduction.md)
 - [API Reference](reference/) - Auto-generated module documentation
