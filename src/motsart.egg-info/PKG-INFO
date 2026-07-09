@@ -1,8 +1,0 @@
-Metadata-Version: 2.4
-Name: motsart
-Version: 0.1.0
-Summary: Accelerating Automated Transition State Search with Generative Models in a Low-Data Regime
-Author-email: Leonard Galustian <leonard.galustian@tuwien.ac.at>
-License: MIT License
-Requires-Python: >=3.11
-Description-Content-Type: text/markdown
