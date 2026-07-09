@@ -62,11 +62,17 @@ For model-generated TS evaluation and paper-style comparison workflow, see [Pape
 
 ## Running the Full Pipeline
 
+Chain the stages above for a single reaction (swap `env=test` for `env=local`
+and adjust `env.rxn_num` for your own runs):
+
 ```bash
-bash complex_and_ts_search_local.sh
+python -m motsart.complex_finder.complex_finder env=test afir_cfg=test optim_cfg=test env.rxn_num=0
+python -m motsart.path_guessers.rmsd_pp.rmsd_pp_reaction_path_guesser env=test env.rxn_num=0
+python -m motsart.path_guessers.ts_conf_sampler env=test env.rxn_num=0
+python -m motsart.validator.base_validator env=test validator_cfg=test validator=xtb env.rxn_num=0
 ```
 
-`complex_and_ts_search_local.sh` is a local template script. Adjust `RXN_NUM`, `env`, and config names for your run.
+For batched runs on a SLURM cluster, use the `complex_and_ts_search_cpu.sh` template.
 
 ## Parallel Execution
 

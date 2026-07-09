@@ -1,0 +1,145 @@
+_target_: goflow.flow_matching.multihead_flow_module.MultiHeadFlowModule
+
+# Learning rate settings
+lr: 0.001
+lr_decay: 0.1
+lr_patience: 16
+lr_monitor: "validation/val_loss"
+ema_decay: 0.9 # try 0.99
+weight_decay: 0.01
+
+# Sampling settings
+num_steps: 25
+num_samples: 25
+seed: 1
+
+# ODE solver for inference (torchdiffeq methods: "euler", "midpoint", "rk4", "dopri5", "adaptive_heun")
+ode_solver: "euler"
+
+# Inference-time filtering (only used during testing)
+# Generate num_samples, select center n_center_samples by median, then apply filter
+n_center_samples: 15                # Number of center samples to keep before filtering
+test_filter_steric_clash: false     # Filter by steric clash penalty
+steric_clash_r_threshold: 0.8       # Distance threshold for steric clash (Angstrom)
+steric_clash_epsilon: 1.0           # Scaling factor for steric clash penalty
+test_filter_chiral_volume: false    # Filter by chiral volume (keep correct chirality)
+# Loss settings
+use_chiral_loss: False            # Penalize incorrect chirality in predicted positions
+chiral_loss_weight: 0.1           # Weight for chiral loss (typical volumes ~10-100 Å³, so 0.1 balances with RMSD)
+
+# Debugging
+grad_clip_val: 1.0
+
+# Task settings
+task_name: ${task_name}
+stats_dir: ${paths.stats_dir}
+
+# Multi-head configuration
+active_heads: ["R", "TS", "P"]  # Can be ["TS"] for TS-only, ["R", "P"] for endpoints only, etc.
+
+# Chirality-aware settings
+use_chiral_volume_feature: false  # Option 1: Add chiral volume from x_t and target rs_tag as features
+use_cross_product: false          # Option 2: Add cross-product layers for chirality awareness
+n_cross_product_layers: 1         # Number of cross-product layers (if use_cross_product=true)
+
+# Initial condition conditioning (t=0 prior)
+use_init_cond: false              # Additive conditioning based on displacement from initial condition (t=0 prior)
+
+# Flow matching variant (exact I-CFM only)
+flow_type: exact
+
+# Simulation-based training (online Reflow)
+# Simulate ODE forward to t_k, then do FM from t_k to 1. Teaches self-correction.
+sim_train: false          # Enable simulation-based training
+sim_num_steps: 5          # Euler steps for forward simulation (t=0 to t_k)
+sim_start_epoch: 15       # Start simulation training after this many epochs of standard FM
+sim_ramp_epochs: 20       # Ramp sim probability from 0 to sim_max_prob over this many epochs
+sim_max_prob: 0.5         # Maximum probability of doing simulation-based training per batch
+sim_max_t: 0.75           # Maximum simulation cutoff t_k (sampled uniformly in [0, sim_max_t])
+
+# Validation loss mode:
+# - "fm": standard flow-matching validation (default, fastest)
+# - "rollout": inference-like rollout RMSD from t=0->1
+# - "hybrid": (1-w)*fm + w*rollout
+val_loss_mode: "fm"
+val_rollout_weight: 0.5
+val_rollout_num_steps: null      # null -> use model.sim_num_steps
+val_rollout_subset_batches: 0    # 0 -> use all validation batches for rollout
+val_log_rollout: false           # Log rollout metrics without using them for model selection
+
+loss_weights:
+  R: 1.0
+  TS: 1.0
+  P: 1.0
+
+noise_levels:
+  R: 0.4
+  TS: 0.4
+  P: 0.4
+
+# Prior modes per head: "rdkit", "interpolation", "pos_guess", "gaussian", "harmonic"
+prior_modes:
+  R: "rdkit"           # Use confs_R_N_M_3
+  TS: "interpolation"  # Use 0.5*R + 0.5*P_aligned
+  P: "rdkit"           # Use confs_P_N_M_3
+
+# Output head settings
+output:
+  n_hidden: 64 # try 256
+
+# Multi-head representation
+representation:
+  _target_: goflow.gotennet.models.representation.multihead_gotennet.MultiHeadGotenNet
+
+  # Feature dimensions
+  n_atom_basis: 256
+  n_atom_rdkit_feats: 36
+  numerical_size_scale: 1.0  # With proper normalization enabled, scaling is not needed
+
+  # Layer configuration
+  n_shared_layers: 3    # Shared backbone layers
+  n_head_layers: 2      # Per-head specialized layers
+
+  # Radial basis
+  n_rbf: 20
+  cutoff_fn:
+    _target_: goflow.gotennet.models.components.ops.CosineCutoff
+    cutoff: 5.0
+  radial_basis: 'expnorm'
+
+  # Activation and initialization
+  activation: "swish"
+  max_z: 100
+  weight_init: "xavier_uniform"
+  bias_init: "zeros"
+
+  # Normalization (critical for numerical stability)
+  int_layer_norm: "layer"    # LayerNorm for scalar features (h)
+  int_vector_norm: "rms"     # RMS norm for vector features (mu)
+
+  # Attention settings
+  num_heads: 8
+  attn_dropout: 0.1
+
+  # Edge and aggregation settings
+  edge_updates: 'norej'
+  aggr: "add"
+  edge_ln: ''
+  sep_int_vec: True
+  lmax: 2 # try 1
+
+  # Multi-head specific
+  active_heads: ${model.active_heads}
+  use_cross_attention: false
+  cross_attn_type: "bidirectional"  # "r_to_ts", "p_to_ts", "bidirectional"
+
+  # Chirality-aware options
+  use_chiral_volume_feature: ${model.use_chiral_volume_feature}  # Option 1: chiral volume + target sign features
+  use_cross_product: ${model.use_cross_product}                   # Option 2: cross-product layers
+  n_cross_product_layers: ${model.n_cross_product_layers}
+
+  # Initial condition conditioning
+  use_init_cond: ${model.use_init_cond}  # Additive conditioning based on displacement from t=0 prior
+
+  # Backbone skip connections
+  use_backbone_skip: false  # Add skip connections around GATA+EQFF blocks (in addition to internal skips)

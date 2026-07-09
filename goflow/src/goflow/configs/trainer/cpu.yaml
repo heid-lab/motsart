@@ -1,0 +1,9 @@
+defaults:
+  - default
+
+max_epochs: 500
+accelerator: cpu
+devices: 1
+
+gradient_clip_val: 1.0
+gradient_clip_algorithm: norm

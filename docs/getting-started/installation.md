@@ -26,13 +26,16 @@ We recommend installing [Miniforge](https://github.com/conda-forge/miniforge/rel
 
 ## Install moTSart
 
-Create the environment, activate it, and install moTSart in editable mode:
+Create the environment, activate it, and install moTSart together with the
+vendored `ML-FSM` and `goflow` packages in editable mode:
 
 ```bash
 conda env create -f environment.yml
 conda activate motsart
-pip install -e .
+pip install -e ./ML-FSM -e ./goflow -e .
 ```
+
+`goflow` provides the generative flow-matching model used by the learning pipeline. To import `goflow` and run the learning/generative pipeline you also need PyTorch + PyG (see [PyTorch & PyG](#pytorch-pyg-required-for-learning)) - the conda environment does not install them. The training/sampling scripts under `goflow/scripts/` are the authors' original cluster scripts and contain machine-specific paths; adapt them before use.
 
 ## Optional Dependencies
 
@@ -48,9 +51,9 @@ pip install pysisyphus
 pip install pyscf gpu4pyscf-cuda12x
 ```
 
-### PyTorch & PyTorch Geometric
+## PyTorch & PyG (required for learning)
 
-Required for learning. Install the version matching your platform:
+Required to import `goflow` and run the learning/generative pipeline. Install the version matching your platform. If you also use the `mlip` validator, install `fairchem-core` before this step (it can pull a newer torch and break the pinned versions below):
 
 === "Linux (CUDA 12.4)"
 
@@ -78,6 +81,6 @@ Installed via the conda environment. Verify:
 xtb --version
 ```
 
-### ORCA 6.1 (optional, for DFT validation)
+### ORCA 6.1
 
 [Download ORCA](https://orcaforum.kofo.mpg.de/) and configure its path in your environment config (see [Configuration](../configuration/index.md)).

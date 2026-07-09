@@ -6,9 +6,8 @@ We provide SLURM-oriented scripts for cluster workflows.
 
 | Script | Description |
 |--------|-------------|
-| `complex_and_ts_search_local.sh` | Local pipeline template |
 | `complex_and_ts_search_cpu.sh` | SLURM CPU pipeline template |
-| `complex_and_ts_search_gpu.sh` | GPU validator-oriented template |
+| `complex_and_ts_search_musica.sh` | MUSICA cluster pipeline template |
 | `validation_goflow.sh` | Validate model-generated TS guesses on cluster |
 
 ### Running on SLURM

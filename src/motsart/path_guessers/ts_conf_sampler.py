@@ -18,16 +18,7 @@ import os
 
 
 def get_sorted_conformer_coords(mol: Chem.Mol) -> np.ndarray:
-    """
-    Sorts conformers by energy and returns their coordinates as a numpy array.
-    
-    Args:
-        mol: RDKit molecule containing conformers.
-        
-    Returns:
-        np.ndarray: A (C, N, 3) array where C is the number of conformers,
-                    N is the number of atoms, and 3 is (x, y, z).
-    """
+    """Return conformer coordinates sorted by energy, shape (C, N, 3)."""
     # 1. Get all conformers
     confs = list(mol.GetConformers())
     

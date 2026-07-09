@@ -1,0 +1,58 @@
+_target_: goflow.flow_matching.flow_module.FlowModule
+#label: ${label}
+#task: ${task}
+
+#cutoff: 5.0
+lr: 0.001
+lr_decay: 0.1
+lr_patience: 16
+lr_monitor: "validation/ema_loss"
+ema_decay: 0.9
+weight_decay: 0.01
+
+num_steps: 25
+num_samples: 25
+seed: 1
+
+# ODE solver for inference (torchdiffeq methods: "euler", "midpoint", "rk4", "dopri5", "adaptive_heun")
+ode_solver: "euler"
+sample_method: pos_guess
+noise_level: 0.4
+
+
+task_name: ${task_name}
+stats_dir: ${paths.stats_dir}
+
+# Force evaluation during testing (computes mean/max force norm for predicted structures)
+# Charge is calculated automatically from the reactant SMILES
+evaluate_force_norm: false           # Enable force norm evaluation as a metric
+force_backend: "xtb"
+force_multiplicity: 1                # Spin multiplicity (1=singlet, 2=doublet, etc.)
+
+output:
+  n_hidden: 64
+
+representation:
+  _target_: goflow.gotennet.models.representation.gotennet.GotenNet
+  n_atom_basis: 256
+  n_atom_rdkit_feats: 36
+  numerical_size_scale: .7
+  n_interactions: 3
+  n_rbf: 20
+  cutoff_fn:
+    _target_: goflow.gotennet.models.components.ops.CosineCutoff
+    cutoff: 5.0
+  radial_basis: 'expnorm'
+  activation: "swish"
+  max_z: 100
+  weight_init: "xavier_uniform"
+  bias_init: "zeros"
+  int_layer_norm: ""
+  int_vector_norm: ""
+  num_heads: 8
+  attn_dropout: 0.1
+  edge_updates: 'norej'
+  aggr: "add"
+  edge_ln: ''
+  sep_int_vec: True
+  lmax: 2

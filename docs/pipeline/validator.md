@@ -37,6 +37,28 @@ python -m motsart.validator.base_validator env=local validator_cfg=local validat
 !!! note
     ORCA must be installed and configured in `env.orca_path`.
 
+### MLIP validator (OMol25, via ORCA ExtOpt)
+
+Drives ORCA's TS optimizer with a FAIRChem OMol25 machine-learned interatomic
+potential (default: `eSEN-sm-conserving`) through ORCA's `otool_external`
+(`! ExtOpt`) interface. Energies and gradients come from the MLIP while ORCA's
+own `OptTS`/`IRC`/`NumFreq` drive the geometry, so the engine is swappable with
+`xtb`/`dft` and nothing else changes.
+
+```bash
+python -m motsart.validator.base_validator env=local validator_cfg=local validator=mlip env.rxn_num=0
+```
+
+!!! note
+    Requires `fairchem-core` + `torch` in the environment, and access to the eSEN
+    checkpoint (HuggingFace-gated registry name `esen-sm-conserving-all-omol`, or a
+    local `*.pt` via `MOTSART_MLIP_MODEL`). The device is auto-selected (CUDA if
+    available, else CPU). The MLIP runs gas-phase (no implicit solvent). The
+    external-tool wrapper lives at
+    `src/motsart/validator/orca_validator/orca_external_tools/mlip_external.py`;
+    see [`experiments/`](https://github.com/heid-lab/motsart/tree/main/experiments)
+    for engine-comparison run/analysis scripts and a no-GPU plumbing test.
+
 ## Configuration
 
 ### Validator config (`validator_cfg`)
@@ -49,6 +71,7 @@ python -m motsart.validator.base_validator env=local validator_cfg=local validat
 | `IRC_MaxIter` | Maximum IRC iterations |
 | `skip_full_irc` | If `true`, use heuristic IRC via graphRC only |
 | `path_guessers_to_validate` | List of TS methods to validate |
+| `require_no_extra_bonds` | graphRC strictness. If `false` (default), a TS passes when all *expected* bond changes are recovered, tolerating extra (unexpected) ones; if `true`, any extra bond change also rejects the TS |
 
 ## Computing statistics
 

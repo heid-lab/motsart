@@ -10,7 +10,9 @@ authors = [
 description = "Accelerating Automated Transition State Search with Generative Models in a Low-Data Regime"
 license = { text = "MIT License" }
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "mlfsm",  # Freezing String Method TS guesser. Vendored editable copy at ./ML-FSM
+]
 readme = "README.md"
 dynamic = ["version"]
 

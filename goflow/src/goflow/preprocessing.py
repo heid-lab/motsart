@@ -1,0 +1,323 @@
+import pickle
+import os
+import numpy as np
+from types import SimpleNamespace
+import torch
+import torch.nn.functional as F
+from torch_geometric.data import Data
+from rdkit import Chem
+from rdkit import RDLogger
+from rdkit.Chem import AllChem
+from rdkit.Chem.rdchem import BondType as BT
+from ase.io import iread
+from typing import List, Dict, Optional
+
+# Suppress RDKit warnings
+RDLogger.DisableLog("rdApp.*")
+
+# Constants
+BOND_TYPES = {t: i for i, t in enumerate(BT.names.values())}
+
+# --- Helper Functions ---
+def parse_xyz_corpus_ase(filename):
+    return [atoms.positions for atoms in iread(filename)]
+
+def get_closest_value(v: Dict, feat):
+    if feat in v: return v[feat]
+    return v[min(v.keys(), key=lambda k: abs(int(k) - int(feat)))]
+
+def get_mol(smiles: str) -> Chem.Mol:
+    params = Chem.SmilesParserParams()
+    params.removeHs = False
+    return Chem.MolFromSmiles(smiles, params)
+
+
+def get_cip_tetra_atoms_in_decreasing_order(mol, perm_inv):
+    """
+    Get the tetrahedral atoms map numbers in decreasing order of their CIP rank.
+    Ordered by ascending atom map number (with perm_inv).
+    Also returns a tensor with 0 for R and 1 for S for each chiral center.
+    :param mol: RDKit molecule object
+    :param perm_inv: Inverse permutation array for atom map numbers
+    :return: (tensor of tetrahedral atoms map numbers, tensor of chiral center indices, tensor of R/S tags)
+    """
+    AllChem.AssignStereochemistry(mol, cleanIt=True, force=True, flagPossibleStereoCenters=True)
+    mn_to_mnidx = {atom.GetAtomMapNum():i for i, atom in enumerate(np.array(mol.GetAtoms())[perm_inv])}
+    
+    cip_decr_chi_nbrs_C_4 = []
+    chi_center_C = []
+    rs_tag_C = []
+    
+    for chi_atom in mol.GetAtoms():
+        cip_label = None
+        if chi_atom.HasProp('_CIPCode'):
+            cip_label = chi_atom.GetProp('_CIPCode')
+            if cip_label not in ('R', 'S'):
+                continue
+        else:
+            continue
+        
+        chi_map_num = chi_atom.GetAtomMapNum()
+        
+        # 2. Gather tetrahedral neighbors
+        tetra_atoms_4 = list(chi_atom.GetNeighbors())
+        if len(tetra_atoms_4) != 4: continue
+        
+        # Check if all neighbors have map numbers before proceeding
+        if not all(atom.GetAtomMapNum() for atom in tetra_atoms_4):
+            raise ValueError("All neighbor atoms must have AtomMapNum property set.")
+                
+        # 3. Sort neighbors by CIP rank
+        ranks_4 = [int(n.GetProp('_CIPRank')) for n in tetra_atoms_4]
+        assert len(set(ranks_4)) == 4
+        tetra_atoms_sorted_4 = [nbr for _, nbr in sorted(zip(ranks_4, tetra_atoms_4), reverse=True)]
+        
+        # 4. Get the map numbers in sorted order
+        rank_sorted_mapnums_4 = [n.GetAtomMapNum() for n in tetra_atoms_sorted_4]
+        
+        # 5. Convert map numbers to indices in the sorted list (ordered by ascending map number)
+        cip_decr_chi_nbrs_4 = [mn_to_mnidx[n] for n in rank_sorted_mapnums_4]
+        chi_mn_idx = mn_to_mnidx[chi_map_num]
+
+        # Store [nbr4_lowest_priority, nbr1, nbr2, nbr3] for chiral volume calculation
+        # CIP convention: view from lowest priority (nbr4) toward center
+        # Volume sign is computed from vectors: nbr4 -> nbr1, nbr4 -> nbr2, nbr4 -> nbr3
+        cip_decr_chi_nbrs_C_4.append([cip_decr_chi_nbrs_4[3]] + cip_decr_chi_nbrs_4[:3])
+        chi_center_C.append(chi_mn_idx)
+        rs_tag_C.append(-1 if cip_label == 'R' else 1)
+    
+    # Convert to tensor
+    if len(cip_decr_chi_nbrs_C_4) == 0:
+        cip_decr_chi_nbrs_C_4 = torch.empty((0, 4), dtype=torch.int32)
+        chi_center_C = torch.empty((0,), dtype=torch.int32)
+        rs_tag_C = torch.empty((0,), dtype=torch.int32)
+    else:
+        cip_decr_chi_nbrs_C_4 = torch.tensor(np.array(cip_decr_chi_nbrs_C_4, dtype=np.int32))
+        chi_center_C = torch.tensor(np.array(chi_center_C, dtype=np.int32))
+        rs_tag_C = torch.tensor(np.array(rs_tag_C, dtype=np.int32))
+    
+    return cip_decr_chi_nbrs_C_4, chi_center_C, rs_tag_C
+
+
+def process_state(smiles: str, feat_dict: Dict) -> SimpleNamespace:
+    """
+    Processes a single molecule state (Reactant OR Product)
+    Returns a namespace containing the mol, features, permutations, and adjacency.
+    """
+    # 1. Setup
+    mol = get_mol(smiles)
+    
+    # 2. Calc Permutations (MapNum -> Index mappings)
+    # perm: map_num for atom at index i
+    perm = np.array([a.GetAtomMapNum() for a in mol.GetAtoms()]) - 1
+    # perm_inv: index of atom with map_num i (Canonical ordering)
+    perm_inv = np.argsort(perm)
+
+    # 3. Extract Node Features
+    atoms = np.array(mol.GetAtoms())[perm_inv]
+    z = [atom.GetAtomicNum() for atom in atoms]
+    
+    feat_indices = []
+    for atom in atoms:
+        atomic_feat = []
+        for k, v in feat_dict.items():
+            atomic_feat.append(get_closest_value(v, getattr(atom, k)()))
+        feat_indices.append(atomic_feat)
+    
+    # One-Hot Encoding
+    feat_tensor = torch.tensor(feat_indices, dtype=torch.long)
+    num_cls = [len(v) for k, v in feat_dict.items()]
+    feat_onehot = [F.one_hot(feat_tensor[:, i], num_classes=n) for i, n in enumerate(num_cls)]
+    final_feat = torch.cat(feat_onehot, dim=-1).float()
+
+    # 4. Adjacency Matrix (Reordered to Canonical)
+    adj = Chem.rdmolops.GetAdjacencyMatrix(mol)
+    adj_perm = adj[perm_inv, :][:, perm_inv]
+
+    # 5. Chirality Info
+    cip_decr_chi_nbrs_C_4, chi_center_C, rs_tag_C = get_cip_tetra_atoms_in_decreasing_order(mol, perm_inv)
+
+    return SimpleNamespace(
+        mol=mol,
+        z=torch.tensor(z, dtype=torch.long),
+        feat=final_feat,
+        perm=torch.tensor(perm),
+        perm_inv=torch.tensor(perm_inv),
+        adj_perm=adj_perm,
+        cip_decr_chi_nbrs_C_4=cip_decr_chi_nbrs_C_4,
+        chi_center_C=chi_center_C,
+        rs_tag_C=rs_tag_C,
+    )
+
+def extract_bond_types(state: SimpleNamespace, row: np.ndarray, col: np.ndarray) -> torch.Tensor:
+    """Extracts bond types for specific edges defined by row/col in the canonical graph."""
+    bond_types = []
+    # Map canonical indices back to local atom indices
+    atom_i = state.perm_inv[row]
+    atom_j = state.perm_inv[col]
+
+    for i, j in zip(atom_i, atom_j):
+        b = state.mol.GetBondBetweenAtoms(int(i), int(j))
+        bond_types.append(BOND_TYPES[b.GetBondType()] if b else 0)
+        
+    return torch.tensor(bond_types, dtype=torch.long)
+
+# --- Main Logic ---
+
+class ChiData(Data):
+    def __cat_dim__(self, key, item, *args, **kwargs):
+        """
+        Determines the concatenation dimension for a given attribute.
+        """
+        # List of attribute keys that should be concatenated along the first dimension (dim=0)
+        # instead of the default last dimension for '*_index' suffixed tensors.
+        keys_to_cat_dim_0 = {
+            'r_cip_decr_chi_nbrs_C_4_index',
+            'p_cip_decr_chi_nbrs_C_4_index',
+            'r_chi_center_C_index',
+            'p_chi_center_C_index',
+            'r_rs_tag_C_index',
+            'p_rs_tag_C_index'
+        }
+
+        if key in keys_to_cat_dim_0:
+            # If the item is a tensor, concatenate along the first dimension.
+            return 0
+
+        # For all other attributes, fall back to the default PyG behavior.
+        return super().__cat_dim__(key, item, *args, **kwargs)
+
+    def __inc__(self, key, value, *args, **kwargs):
+        """
+        Determines the increment for batching (offset added to indices).
+        """
+        # rs_tag fields are labels (+1/-1), not indices - don't increment them
+        if key in ('r_rs_tag_C_index', 'p_rs_tag_C_index'):
+            return 0
+
+        # Chiral center and neighbor indices should be incremented by num_nodes
+        if key in ('r_cip_decr_chi_nbrs_C_4_index', 'p_cip_decr_chi_nbrs_C_4_index',
+                   'r_chi_center_C_index', 'p_chi_center_C_index'):
+            return self.num_nodes
+
+        return super().__inc__(key, value, *args, **kwargs)
+
+def generate_graph_data(
+    r_smiles: str,
+    p_smiles: str,
+    pos_guess: torch.Tensor,
+    pos_gt: torch.Tensor,
+    feat_dict: Dict,
+    data_cls=ChiData
+):
+    # 1. Process Reactant and Product Independently
+    R = process_state(r_smiles, feat_dict)
+    P = process_state(p_smiles, feat_dict)
+
+    # Sanity Checks
+    assert torch.equal(R.z, P.z), "Atomic number mismatch between R and P"
+    N = len(R.z)
+    if pos_gt is not None:
+        assert len(pos_gt) == N
+    if pos_guess is not None:
+        assert len(pos_guess) == N
+
+    # 2. Combine Graphs (Union of Edges)
+    adj = R.adj_perm + P.adj_perm
+    row, col = adj.nonzero()
+    
+    # 3. Extract Edge Features based on Union
+    r_edge_type = extract_bond_types(R, row, col)
+    p_edge_type = extract_bond_types(P, row, col)
+
+    # Sort edges (PyG convention: row-major sort)
+    edge_index = torch.tensor(np.array([row, col]), dtype=torch.long)
+    perm = (edge_index[0] * N + edge_index[1]).argsort()
+    
+    edge_index = edge_index[:, perm]
+    edge_type_final = (r_edge_type[perm] * len(BOND_TYPES)) + p_edge_type[perm]
+
+    # 4. Return Data
+    return data_cls(
+        num_nodes=N,
+
+        atom_type=R.z,
+        r_feat=R.feat,
+        p_feat=P.feat,
+
+        edge_index=edge_index,
+        edge_type=edge_type_final,
+
+        pos=torch.tensor(pos_gt).float() if isinstance(pos_gt, np.ndarray) else pos_gt,
+        pos_guess=torch.tensor(pos_guess).float() if isinstance(pos_guess, np.ndarray) else pos_guess,
+
+        r_cip_decr_chi_nbrs_C_4_index=R.cip_decr_chi_nbrs_C_4.clone(),
+        r_chi_center_C_index=R.chi_center_C.clone(),
+        r_rs_tag_C_index=R.rs_tag_C.clone(),
+
+        p_cip_decr_chi_nbrs_C_4_index=P.cip_decr_chi_nbrs_C_4.clone(),
+        p_chi_center_C_index=P.chi_center_C.clone(),
+        p_rs_tag_C_index=P.rs_tag_C.clone(),
+
+        smiles=f"{r_smiles}>>{p_smiles}",
+    )
+
+def process_reaction_data(
+    feat_dict: Dict,
+    rxn_smiles: str,
+    rxn_id: int,
+    guess_xyzs_C_N_3: Optional[List[np.ndarray]] = None,
+    gt_xyzs_C_N_3: Optional[List[np.ndarray]] = None,
+):
+    r_smi, p_smi = rxn_smiles.split(">>")
+    data_list = []
+    
+    assert guess_xyzs_C_N_3 is not None or gt_xyzs_C_N_3 is not None
+    if guess_xyzs_C_N_3 is None: guess_xyzs_C_N_3 = [None] * len(gt_xyzs_C_N_3)
+    if gt_xyzs_C_N_3 is None: gt_xyzs_C_N_3 = [None] * len(guess_xyzs_C_N_3)
+
+    for i, (guess_N_3, gt_N_3) in enumerate(zip(guess_xyzs_C_N_3, gt_xyzs_C_N_3)):
+        try:
+            data = generate_graph_data(r_smi, p_smi, guess_N_3, gt_N_3, feat_dict)
+            data.rxn_index = rxn_id
+            data_list.append(data)
+        except Exception as e:
+           print(f"!!! Skipping rxn id {rxn_id} mol {i}: {e} !!!")
+
+    return data_list
+
+
+if __name__ == "__main__":
+    """
+    Process dataset.
+    """
+    import pandas as pd
+    import argparse
+    from tqdm import tqdm
+
+    with open("data/RDB7/feat_dict_organic.pkl", "rb") as f:
+        feat_dict_organic = pickle.load(f)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--csv_file", type=str, required=True, help="Path to rdb7_full.csv")
+    parser.add_argument("--xyz_file", type=str, required=True, help="Path to rdb7_full.xyz")
+    parser.add_argument("--save_filepath", type=str, default="data/processed")
+    args = parser.parse_args()
+    
+    # Read CSV file with reaction data
+    df = pd.read_csv(args.csv_file)
+    rxn_smiles_R = df.smiles
+    rxn_indices_R = df.rxn if 'rxn' in df.columns else range(len(df))
+    # Read xyz file with gt TS data
+    xyz_blocks_3R = parse_xyz_corpus_ase(args.xyz_file)
+    rxn_block_R_N_3 = [np.array(xyz_blocks_3R[i]) for i in range(len(xyz_blocks_3R))]
+
+    data_list_R = []
+    for (id, smiles, xyz_N_3) in tqdm(zip(rxn_indices_R, rxn_smiles_R, rxn_block_R_N_3)):
+        data_1 = process_reaction_data(feat_dict_organic, smiles, id, guess_xyzs_C_N_3=None, gt_xyzs_C_N_3=xyz_N_3[None, ...])
+        data_list_R.extend(data_1)
+
+    os.makedirs(os.path.dirname(args.save_filepath), exist_ok=True)
+    with open(args.save_filepath, "wb") as f:
+        pickle.dump(data_list_R, f)
+        

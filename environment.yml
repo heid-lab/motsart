@@ -14,6 +14,7 @@ dependencies:
   - xtb
   - ase
   - qcelemental
+  - h5py
   - pip:
     - hydra-zen
     - wandb
@@ -22,3 +23,6 @@ dependencies:
     - rich
     - graphrc
     - racerts
+    - lightning
+    - lightning-utilities
+    - torchdiffeq

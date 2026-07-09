@@ -16,8 +16,7 @@ import re
 from hydra_zen import zen, store
 
 from motsart.path_guessers.base_reaction_path_guesser import BaseReactionPathGuesser
-from motsart.complex_finder.utils import ReactionData, get_rxn_data
-from motsart.common import PathHandler
+from motsart.complex_finder.utils import get_rxn_data
 from motsart.conf_default import EnvironmentConfig
 
 

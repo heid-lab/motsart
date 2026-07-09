@@ -29,6 +29,26 @@ Conformer sampling approach to find lower-energy conformers from the RMSD-PP TS 
 python -m motsart.path_guessers.ts_conf_sampler env=test env.rxn_num=0
 ```
 
+### ML-FSM (Freezing String Method)
+
+Double-ended TS search via the [Freezing String Method](https://github.com/thegomeslab/ML-FSM) (`mlfsm`). A string is grown and optimized between the reactant complex and its respective product on the same OMol25/FAIRChem MLIP ("eSEN", `esen-sm-conserving-all-omol`) used by the MLIP validator; the highest-energy node of the converged string is the TS guess.
+
+```bash
+python -m motsart.path_guessers.ml_fsm.ml_fsm_reaction_path_guesser env=test fsm_cfg=test env.rxn_num=0
+```
+
+The MLIP is configured through the `env` preset (`mlip_model`, `mlip_task_name`, `mlip_device`); FSM parameters (interpolation/optimization coordinates, node count, optimizer settings) are set via the `fsm_cfg` group (`base` / `test` / `local`, see `FSMPathGuesserParams`).
+
+### ASE CI-NEB
+
+Climbing-image Nudged Elastic Band via [ASE](https://wiki.fysik.dtu.dk/ase/). A band is IDPP-interpolated between the reactant complex and its respective product and relaxed on the same OMol25/FAIRChem MLIP ("eSEN", `esen-sm-conserving-all-omol`) used by the MLIP validator; the highest-energy (climbing) image of the converged band is the TS guess.
+
+```bash
+python -m motsart.path_guessers.neb.neb_reaction_path_guesser env=test neb_cfg=test env.rxn_num=0
+```
+
+The MLIP is configured through the `env` preset (`mlip_model`, `mlip_task_name`, `mlip_device`); NEB parameters (image count, interpolation, optimizer, force tolerance, spring constant) are set via the `neb_cfg` group (`base` / `test` / `local`, see `NEBPathGuesserParams`).
+
 ### Learning / GoFlow
 
 Neural network-based TS guessing using trained GoFlow models. See [Learning](learning.md).

@@ -80,20 +80,6 @@ env_store(
 
 env_store(
     EnvironmentConfig(
-        rxn_csv='data/tetrazine/prelim_h.csv',
-        rxn_num=0,
-        rxn_id=None,
-        orca_path='/opt/ohpc/pub/dft/orca_6_1_0/orca',
-        xtb_path='~/miniforge3/bin/xtb',
-        solvent='water',
-        results_folder='results_tetrazine',
-        vdw_coef=0.80,
-    ),
-    name="tetrazine"
-)
-
-env_store(
-    EnvironmentConfig(
         rxn_csv='data/azide/prelim_h.csv',
         rxn_num=0,
         rxn_id=None,
@@ -102,33 +88,6 @@ env_store(
         solvent='water',
         results_folder='results_azide',
         vdw_coef=0.80,
-    ),
-    name="azide"
-)
-
-env_store(
-    EnvironmentConfig(
-        rxn_csv='data/azide/prelim_h.csv',
-        rxn_num=0,
-        rxn_id=None,
-        orca_path='/bin/orca',
-        xtb_path='~/miniforge3/bin/xtb',
-        solvent='water',
-        results_folder='results_azide_cluster',
-        vdw_coef=0.80,
-    ),
-    name="azide_musica"
-)
-
-env_store(
-    EnvironmentConfig(
-        rxn_csv='data/azide/prelim_h.csv',
-        rxn_num=0,
-        rxn_id=None,
-        orca_path='/opt/ohpc/pub/dft/orca_6_1_0/orca',
-        xtb_path='~/miniforge3/bin/xtb',
-        solvent='water',
-        results_folder='results_azide',
     ),
     name="azide"
 )

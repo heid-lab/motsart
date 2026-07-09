@@ -1,0 +1,1 @@
+rsync -avh --progress "Datalab:/home/leonard.galustian/projects/flowtorc/reaction_analysis/finetune*" ./reaction_analysis/

@@ -13,7 +13,7 @@ Compare TS methods from path guesser (for example `racer_ts`) against model-gene
 
 ## Phase A: Run baseline pipeline
 
-1. Choose your execution script. Local: `bash complex_and_ts_search_local.sh`. Cluster: `sbatch complex_and_ts_search_cpu.sh`.
+1. Run the pipeline stages. Local: run the `python -m motsart.*` stage commands with `env=local` (see [Quick Start](../getting-started/quickstart.md#running-the-full-pipeline)). Cluster: `sbatch complex_and_ts_search_cpu.sh`.
 2. Confirm baseline validation files exist under: `results*/R*/validation/{method}/validation_*.csv`
 
 ## Phase B: Build learning data pickles

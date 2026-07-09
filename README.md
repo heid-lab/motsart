@@ -26,12 +26,19 @@ exec zsh
   cd motsart
   ```
 
-2. Create environment, activate it, and install moTSart in editable mode:
+2. Create environment, activate it, and install moTSart (plus the vendored
+   `ML-FSM` and `goflow` packages) in editable mode:
 ```bash
 conda env create -f environment.yml
 conda activate motsart
-pip install -e .
+pip install -e ./ML-FSM -e ./goflow -e .
 ```
+`goflow` provides the generative flow-matching model used by the learning
+pipeline. To import `goflow` and run the learning/generative pipeline you also
+need PyTorch + PyG (see [PyTorch & PyG](#pytorch--pyg-required-for-learning)
+below) — the conda environment does not install them. The training/sampling
+scripts under `goflow/scripts/` are the authors' original cluster scripts and
+contain machine-specific paths; adapt them before use.
 
 Optional dependencies:
 ```bash
@@ -40,9 +47,20 @@ pip install pysisyphus
 
 # GPU DFT validation (Linux, optional)
 pip install pyscf gpu4pyscf-cuda12x
+
+# MLIP validator engine (validator=mlip): OMol25 model via ORCA ExtOpt
+pip install fairchem-core   # + torch; see experiments/README.md for model access
 ```
 
-PyTorch + PyG for learning:
+The saddle-point optimization engine is selectable via `validator=xtb|dft|mlip`.
+The `mlip` engine drives ORCA's optimizer with a FAIRChem OMol25 potential
+(default `eSEN-sm-conserving`) through the `otool_external` interface; see
+[`experiments/`](experiments/) for engine-comparison and analysis scripts.
+
+## PyTorch & PyG (required for learning)
+
+Required to import `goflow` and run the learning/generative pipeline. Install the build matching your platform. If you also use the `mlip` validator, install `fairchem-core` before this step (it can pull a newer torch and break the pinned versions below).
+
 ```bash
 # Linux (CUDA 12.4)
 pip install --index-url https://download.pytorch.org/whl/cu124 'torch==2.6.0' 'torchvision==0.21.0'
@@ -53,6 +71,11 @@ pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
 pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 ```
 
+## Pretrained models
+
+The pretrained goflow (TsOptNet) checkpoint is available on Zenodo:
+[zenodo.org/records/19554844](https://zenodo.org/records/19554844).
+
 # Usage
 Please check out the documentation for a comprehensive user guide: [heid-lab.github.io/motsart](https://heid-lab.github.io/motsart/)
 
@@ -62,8 +85,16 @@ We use hydra-zen for managing configurations directly in python configuration fi
 
 ## Run
 
-- Run the full pipeline locally: `bash complex_and_ts_search_local.sh`
-- Run the pipeline on SLURM CPU nodes: `sbatch complex_and_ts_search_cpu.sh`
+Run the pipeline stages locally with the `env=local` config (replace `0` with the reaction index you want to process):
+
+```bash
+python -m motsart.complex_finder.complex_finder env=local env.rxn_num=0
+python -m motsart.path_guessers.rmsd_pp.rmsd_pp_reaction_path_guesser env=local env.rxn_num=0
+python -m motsart.path_guessers.ts_conf_sampler env=local env.rxn_num=0
+python -m motsart.validator.base_validator env=local validator=xtb env.rxn_num=0
+```
+
+To run across reactions on a SLURM cluster, use the batch template: `sbatch complex_and_ts_search_cpu.sh`.
 
 # Analysis
 
