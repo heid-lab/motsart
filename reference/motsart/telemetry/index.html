@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://heid-lab.github.io/motsart/reference/motsart/validator/utils/">
+        <link rel="canonical" href="https://heid-lab.github.io/motsart/reference/motsart/telemetry/">
       
       
-        <link rel="prev" href="../pyscf_validator/validator/">
+        <link rel="prev" href="../path_guessers/utils/">
       
+      
+        <link rel="next" href="../validator/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>utils - moTSart</title>
+        <title>telemetry - moTSart</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#motsart.validator.utils" class="md-skip">
+        <a href="#motsart.telemetry" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="moTSart" class="md-header__button md-logo" aria-label="moTSart" data-md-component="logo">
+    <a href="../../.." title="moTSart" class="md-header__button md-logo" aria-label="moTSart" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              utils
+              telemetry
             
           </span>
         </div>
@@ -223,7 +225,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +246,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../getting-started/installation/" class="md-tabs__link">
+        <a href="../../../getting-started/installation/" class="md-tabs__link">
           
   
   
@@ -264,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../pipeline/overview/" class="md-tabs__link">
+        <a href="../../../pipeline/overview/" class="md-tabs__link">
           
   
   
@@ -282,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../configuration/" class="md-tabs__link">
+      <a href="../../../configuration/" class="md-tabs__link">
         
   
   
@@ -301,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../cluster/" class="md-tabs__link">
+      <a href="../../../cluster/" class="md-tabs__link">
         
   
   
@@ -324,7 +326,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -358,7 +360,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="moTSart" class="md-nav__button md-logo" aria-label="moTSart" data-md-component="logo">
+    <a href="../../.." title="moTSart" class="md-nav__button md-logo" aria-label="moTSart" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -388,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -469,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/installation/" class="md-nav__link">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
         
   
   
@@ -497,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/quickstart/" class="md-nav__link">
+      <a href="../../../getting-started/quickstart/" class="md-nav__link">
         
   
   
@@ -586,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/overview/" class="md-nav__link">
+      <a href="../../../pipeline/overview/" class="md-nav__link">
         
   
   
@@ -614,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/complex-finder/" class="md-nav__link">
+      <a href="../../../pipeline/complex-finder/" class="md-nav__link">
         
   
   
@@ -642,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/path-guessers/" class="md-nav__link">
+      <a href="../../../pipeline/path-guessers/" class="md-nav__link">
         
   
   
@@ -670,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/validator/" class="md-nav__link">
+      <a href="../../../pipeline/validator/" class="md-nav__link">
         
   
   
@@ -698,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/learning/" class="md-nav__link">
+      <a href="../../../pipeline/learning/" class="md-nav__link">
         
   
   
@@ -726,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../pipeline/paper-reproduction/" class="md-nav__link">
+      <a href="../../../pipeline/paper-reproduction/" class="md-nav__link">
         
   
   
@@ -761,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/" class="md-nav__link">
+      <a href="../../../configuration/" class="md-nav__link">
         
   
   
@@ -788,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../cluster/" class="md-nav__link">
+      <a href="../../../cluster/" class="md-nav__link">
         
   
   
@@ -894,7 +896,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -936,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/" class="md-nav__link">
+      <a href="../common/" class="md-nav__link">
         
   
   
@@ -983,7 +985,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../complex_finder/" class="md-nav__link ">
+            <a href="../complex_finder/" class="md-nav__link ">
               
   
   
@@ -1025,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../complex_finder/afir_backends/" class="md-nav__link">
+      <a href="../complex_finder/afir_backends/" class="md-nav__link">
         
   
   
@@ -1053,7 +1055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../complex_finder/afir_path_guesser/" class="md-nav__link">
+      <a href="../complex_finder/afir_path_guesser/" class="md-nav__link">
         
   
   
@@ -1081,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../complex_finder/complex_finder/" class="md-nav__link">
+      <a href="../complex_finder/complex_finder/" class="md-nav__link">
         
   
   
@@ -1109,7 +1111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../complex_finder/conf/" class="md-nav__link">
+      <a href="../complex_finder/conf/" class="md-nav__link">
         
   
   
@@ -1137,7 +1139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../complex_finder/utils/" class="md-nav__link">
+      <a href="../complex_finder/utils/" class="md-nav__link">
         
   
   
@@ -1173,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../conf/" class="md-nav__link">
+      <a href="../conf/" class="md-nav__link">
         
   
   
@@ -1201,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../conf_default/" class="md-nav__link">
+      <a href="../conf_default/" class="md-nav__link">
         
   
   
@@ -1248,7 +1250,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../learning/" class="md-nav__link ">
+            <a href="../learning/" class="md-nav__link ">
               
   
   
@@ -1290,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/conf/" class="md-nav__link">
+      <a href="../learning/conf/" class="md-nav__link">
         
   
   
@@ -1318,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/data_pkl_to_results/" class="md-nav__link">
+      <a href="../learning/data_pkl_to_results/" class="md-nav__link">
         
   
   
@@ -1346,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/inference/" class="md-nav__link">
+      <a href="../learning/inference/" class="md-nav__link">
         
   
   
@@ -1374,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/results_to_data_pkl/" class="md-nav__link">
+      <a href="../learning/results_to_data_pkl/" class="md-nav__link">
         
   
   
@@ -1402,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/results_to_data_pkl_pre/" class="md-nav__link">
+      <a href="../learning/results_to_data_pkl_pre/" class="md-nav__link">
         
   
   
@@ -1430,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/rtsp_guesser/" class="md-nav__link">
+      <a href="../learning/rtsp_guesser/" class="md-nav__link">
         
   
   
@@ -1458,7 +1460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning/utils/" class="md-nav__link">
+      <a href="../learning/utils/" class="md-nav__link">
         
   
   
@@ -1513,7 +1515,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../path_guessers/" class="md-nav__link ">
+            <a href="../path_guessers/" class="md-nav__link ">
               
   
   
@@ -1555,7 +1557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/base_reaction_path_guesser/" class="md-nav__link">
+      <a href="../path_guessers/base_reaction_path_guesser/" class="md-nav__link">
         
   
   
@@ -1583,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/conf/" class="md-nav__link">
+      <a href="../path_guessers/conf/" class="md-nav__link">
         
   
   
@@ -1630,7 +1632,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../path_guessers/ml_fsm/" class="md-nav__link ">
+            <a href="../path_guessers/ml_fsm/" class="md-nav__link ">
               
   
   
@@ -1672,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/ml_fsm/ml_fsm_reaction_path_guesser/" class="md-nav__link">
+      <a href="../path_guessers/ml_fsm/ml_fsm_reaction_path_guesser/" class="md-nav__link">
         
   
   
@@ -1727,7 +1729,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../path_guessers/neb/" class="md-nav__link ">
+            <a href="../path_guessers/neb/" class="md-nav__link ">
               
   
   
@@ -1769,7 +1771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/neb/neb_reaction_path_guesser/" class="md-nav__link">
+      <a href="../path_guessers/neb/neb_reaction_path_guesser/" class="md-nav__link">
         
   
   
@@ -1824,7 +1826,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../path_guessers/rmsd_pp/" class="md-nav__link ">
+            <a href="../path_guessers/rmsd_pp/" class="md-nav__link ">
               
   
   
@@ -1866,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/rmsd_pp/rmsd_pp_reaction_path_guesser/" class="md-nav__link">
+      <a href="../path_guessers/rmsd_pp/rmsd_pp_reaction_path_guesser/" class="md-nav__link">
         
   
   
@@ -1902,7 +1904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/ts_conf_sampler/" class="md-nav__link">
+      <a href="../path_guessers/ts_conf_sampler/" class="md-nav__link">
         
   
   
@@ -1930,7 +1932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../path_guessers/utils/" class="md-nav__link">
+      <a href="../path_guessers/utils/" class="md-nav__link">
         
   
   
@@ -1963,10 +1965,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../telemetry/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    telemetry
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1982,6 +2009,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motsart.telemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        telemetry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="telemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry--design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telemetry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Telemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.for_rxn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        for_rxn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.tally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tally
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        event
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1991,8 +2125,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2005,15 +2137,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../validator/" class="md-nav__link ">
               
   
   
@@ -2037,7 +2171,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2055,7 +2189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../base_validator/" class="md-nav__link">
+      <a href="../validator/base_validator/" class="md-nav__link">
         
   
   
@@ -2083,7 +2217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compute_stats/" class="md-nav__link">
+      <a href="../validator/compute_stats/" class="md-nav__link">
         
   
   
@@ -2111,7 +2245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conf/" class="md-nav__link">
+      <a href="../validator/conf/" class="md-nav__link">
         
   
   
@@ -2158,7 +2292,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../orca_validator/" class="md-nav__link ">
+            <a href="../validator/orca_validator/" class="md-nav__link ">
               
   
   
@@ -2219,7 +2353,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../orca_validator/orca_external_tools/" class="md-nav__link ">
+            <a href="../validator/orca_validator/orca_external_tools/" class="md-nav__link ">
               
   
   
@@ -2261,7 +2395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../orca_validator/orca_external_tools/mlip_external/" class="md-nav__link">
+      <a href="../validator/orca_validator/orca_external_tools/mlip_external/" class="md-nav__link">
         
   
   
@@ -2289,7 +2423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../orca_validator/orca_external_tools/mlip_server/" class="md-nav__link">
+      <a href="../validator/orca_validator/orca_external_tools/mlip_server/" class="md-nav__link">
         
   
   
@@ -2325,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../orca_validator/utils/" class="md-nav__link">
+      <a href="../validator/orca_validator/utils/" class="md-nav__link">
         
   
   
@@ -2353,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../orca_validator/validator/" class="md-nav__link">
+      <a href="../validator/orca_validator/validator/" class="md-nav__link">
         
   
   
@@ -2408,7 +2542,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../pyscf_validator/" class="md-nav__link ">
+            <a href="../validator/pyscf_validator/" class="md-nav__link ">
               
   
   
@@ -2450,7 +2584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pyscf_validator/validator/" class="md-nav__link">
+      <a href="../validator/pyscf_validator/validator/" class="md-nav__link">
         
   
   
@@ -2483,35 +2617,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    utils
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../validator/utils/" class="md-nav__link">
         
   
   
@@ -2527,85 +2636,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motsart.validator.utils" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        utils
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="utils">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#motsart.validator.utils.ForceBackend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ForceBackend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motsart.validator.utils.ForceCalculationResult" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ForceCalculationResult
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motsart.validator.utils.compute_forces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        compute_forces
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motsart.validator.utils.get_adj_matrix_from_mol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        get_adj_matrix_from_mol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2659,22 +2689,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motsart.validator.utils" class="md-nav__link">
+  <a href="#motsart.telemetry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        utils
+        telemetry
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="utils">
+    <nav class="md-nav" aria-label="telemetry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#motsart.validator.utils.ForceBackend" class="md-nav__link">
+  <a href="#motsart.telemetry--design-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ForceBackend
+        Design notes
       
     </span>
   </a>
@@ -2682,10 +2712,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#motsart.validator.utils.ForceCalculationResult" class="md-nav__link">
+  <a href="#motsart.telemetry.Telemetry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ForceCalculationResult
+        Telemetry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Telemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.for_rxn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        for_rxn
       
     </span>
   </a>
@@ -2693,10 +2735,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#motsart.validator.utils.compute_forces" class="md-nav__link">
+  <a href="#motsart.telemetry.Telemetry.tally" class="md-nav__link">
     <span class="md-ellipsis">
       
-        compute_forces
+        tally
       
     </span>
   </a>
@@ -2704,13 +2746,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#motsart.validator.utils.get_adj_matrix_from_mol" class="md-nav__link">
+  <a href="#motsart.telemetry.Telemetry.event" class="md-nav__link">
     <span class="md-ellipsis">
       
-        get_adj_matrix_from_mol
+        event
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motsart.telemetry.Telemetry.timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2739,24 +2797,44 @@
   
 
 
-  <h1>utils</h1>
+  <h1>telemetry</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="motsart.validator.utils" class="doc doc-heading">
-            <code>motsart.validator.utils</code>
+<h2 id="motsart.telemetry" class="doc doc-heading">
+            <code>motsart.telemetry</code>
 
 
-<a href="#motsart.validator.utils" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#motsart.telemetry" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents first">
 
-        <p>Force computation backends and adjacency-matrix utilities for validation.</p>
-<p>Provides a unified :func:<code>compute_forces</code> interface that dispatches to
-xTB, ORCA DFT, or PySCF (CPU/GPU) backends, plus an RDKit adjacency
-matrix helper used for IRC bond-change comparison.</p>
+        <p>Lightweight per-reaction telemetry: timings + failure tallies to JSONL.</p>
+<p>Each pipeline stage appends newline-delimited JSON records to
+<code>results*/R{rxn_id}/telemetry/metrics.jsonl</code>. Two record kinds:</p>
+<ul>
+<li>
+<p>timing -- how long an expensive component took::</p>
+<p>{"kind":"timing","rxn_id":74,"stage":"validator","component":"sp_opt",
+ "seconds":42.1,"meta":{...}}</p>
+</li>
+<li>
+<p>event  -- a (total, failed) tally for a component, so failure rates can be
+  aggregated across reactions::</p>
+<p>{"kind":"event","rxn_id":74,"stage":"validator","component":"sp_opt",
+ "total":1,"failed":0,"meta":{...}}</p>
+</li>
+</ul>
+<p>Aggregate everything with <code>experiments/summarize_telemetry.py</code>.</p>
+<h4 id="motsart.telemetry--design-notes">Design notes<a class="headerlink" href="#motsart.telemetry--design-notes" title="Permanent link">&para;</a></h4>
+<p>Best-effort: every operation is wrapped so telemetry can never raise into
+  the pipeline. A failed write prints a warning and is dropped.
+Per-reaction file, append-only: stages run as separate processes (one
+  reaction per SLURM task), each appending to its own reaction's file, so there
+  is no cross-process contention.
+Set <code>MOTSART_TELEMETRY=0</code> to disable all recording.</p>
 
 
 
@@ -2781,20 +2859,18 @@ matrix helper used for IRC bond-change comparison.</p>
 
 
 
-<h3 id="motsart.validator.utils.ForceBackend" class="doc doc-heading">
-            <code>ForceBackend</code>
+<h3 id="motsart.telemetry.Telemetry" class="doc doc-heading">
+            <code>Telemetry</code>
 
 
-<a href="#motsart.validator.utils.ForceBackend" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#motsart.telemetry.Telemetry" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="enum.Enum">Enum</span></code></p>
 
 
 
-        <p>Available backends for force calculation.</p>
+        <p>Append timing/event records for one reaction + pipeline stage.</p>
 
 
 
@@ -2804,362 +2880,8 @@ matrix helper used for IRC bond-change comparison.</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>src/motsart/validator/utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="k">class</span><span class="w"> </span><span class="nc">ForceBackend</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Available backends for force calculation.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="n">XTB</span> <span class="o">=</span> <span class="s2">&quot;xtb&quot;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>    <span class="n">ORCA_DFT</span> <span class="o">=</span> <span class="s2">&quot;orca_dft&quot;</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>    <span class="n">PYSCF</span> <span class="o">=</span> <span class="s2">&quot;pyscf&quot;</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="n">PYSCF_GPU</span> <span class="o">=</span> <span class="s2">&quot;pyscf_gpu&quot;</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="motsart.validator.utils.ForceCalculationResult" class="doc doc-heading">
-            <code>ForceCalculationResult</code>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
-  </span>
-
-<a href="#motsart.validator.utils.ForceCalculationResult" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-
-
-        <p>Result of force calculation.</p>
-
-
-
-
-
-
-
-
-              <details class="mkdocstrings-source">
-                <summary>Source code in <code>src/motsart/validator/utils.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="k">class</span><span class="w"> </span><span class="nc">ForceCalculationResult</span><span class="p">:</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Result of force calculation.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="n">forces</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>  <span class="c1"># Shape (N, 3), in Hartree/Bohr</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>    <span class="n">energy</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># In Hartree</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>    <span class="n">mean_force_norm</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># In Hartree/Bohr</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>    <span class="n">max_force_norm</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># In Hartree/Bohr</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="motsart.validator.utils.compute_forces" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">compute_forces</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">ForceBackend</span><span class="o">.</span><span class="n">XTB</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">multiplicity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;def2-SVP&#39;</span><span class="p">,</span> <span class="n">functional</span><span class="o">=</span><span class="s1">&#39;b3lyp&#39;</span><span class="p">,</span> <span class="n">xtb_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orca_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solvent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nprocs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxcore</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span></code>
-
-<a href="#motsart.validator.utils.compute_forces" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Compute forces on atoms using specified backend.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>coords</code>
-            </td>
-            <td>
-                  <code><span title="numpy.ndarray">ndarray</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Atomic coordinates, shape (N, 3), in Angstrom</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>atomic_numbers</code>
-            </td>
-            <td>
-                  <code><span title="numpy.ndarray">ndarray</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Atomic numbers, shape (N,)</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>backend</code>
-            </td>
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="ForceBackend (motsart.validator.utils.ForceBackend)" href="#motsart.validator.utils.ForceBackend">ForceBackend</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Calculation backend (XTB, ORCA_DFT, PYSCF, PYSCF_GPU)</p>
-              </div>
-            </td>
-            <td>
-                  <code><span title="motsart.validator.utils.ForceBackend.XTB">XTB</span></code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>charge</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Total charge of the system</p>
-              </div>
-            </td>
-            <td>
-                  <code>0</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>multiplicity</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Spin multiplicity (1 = singlet, 2 = doublet, etc.)</p>
-              </div>
-            </td>
-            <td>
-                  <code>1</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>basis</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Basis set for DFT calculations (PySCF/ORCA)</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;def2-SVP&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>functional</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>DFT functional (PySCF/ORCA)</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;b3lyp&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>xtb_path</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to XTB executable (for XTB backend)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>orca_path</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to ORCA executable (for ORCA backend)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>solvent</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Solvent name for implicit solvation (optional)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>nprocs</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of processors (ORCA/PySCF)</p>
-              </div>
-            </td>
-            <td>
-                  <code>1</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>maxcore</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Memory per core in MB (ORCA)</p>
-              </div>
-            </td>
-            <td>
-                  <code>2048</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="ForceCalculationResult
-
-
-  
-      dataclass
-   (motsart.validator.utils.ForceCalculationResult)" href="#motsart.validator.utils.ForceCalculationResult">ForceCalculationResult</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>ForceCalculationResult with forces, energy, and force statistics</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-            <details class="mkdocstrings-source">
-              <summary>Source code in <code>src/motsart/validator/utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+                <summary>Source code in <code>src/motsart/telemetry.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
 <span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
 <span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
 <span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
@@ -3222,74 +2944,123 @@ matrix helper used for IRC bond-change comparison.</p>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span>
 <span class="normal"><a href="#__codelineno-0-102">102</a></span>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_forces</span><span class="p">(</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="n">coords</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="n">atomic_numbers</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="n">backend</span><span class="p">:</span> <span class="n">ForceBackend</span> <span class="o">=</span> <span class="n">ForceBackend</span><span class="o">.</span><span class="n">XTB</span><span class="p">,</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="n">charge</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="n">multiplicity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="c1"># PySCF-specific options</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="n">basis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;def2-SVP&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="n">functional</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;b3lyp&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="c1"># XTB/ORCA-specific options</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="n">xtb_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="n">orca_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="n">solvent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="n">nprocs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="n">maxcore</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">,</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForceCalculationResult</span><span class="p">:</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">    Compute forces on atoms using specified backend.</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        coords: Atomic coordinates, shape (N, 3), in Angstrom</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        atomic_numbers: Atomic numbers, shape (N,)</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        backend: Calculation backend (XTB, ORCA_DFT, PYSCF, PYSCF_GPU)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        charge: Total charge of the system</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        multiplicity: Spin multiplicity (1 = singlet, 2 = doublet, etc.)</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        basis: Basis set for DFT calculations (PySCF/ORCA)</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        functional: DFT functional (PySCF/ORCA)</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">        xtb_path: Path to XTB executable (for XTB backend)</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        orca_path: Path to ORCA executable (for ORCA backend)</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        solvent: Solvent name for implicit solvation (optional)</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">        nprocs: Number of processors (ORCA/PySCF)</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        maxcore: Memory per core in MB (ORCA)</span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="k">class</span><span class="w"> </span><span class="nc">Telemetry</span><span class="p">:</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Append timing/event records for one reaction + pipeline stage.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metrics_jsonl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">metrics_jsonl</span><span class="p">)</span> <span class="k">if</span> <span class="n">metrics_jsonl</span> <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rxn_id</span> <span class="o">=</span> <span class="n">rxn_id</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="n">stage</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MOTSART_TELEMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">enabled</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="c1"># ----------------------------- constructors ----------------------------- #</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">for_rxn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">results_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Telemetry&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Build from a reaction id + results folder (resolves the JSONL path).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>            <span class="n">ph</span> <span class="o">=</span> <span class="n">PathHandler</span><span class="p">(</span><span class="n">rxn_id</span><span class="o">=</span><span class="n">rxn_id</span><span class="p">,</span> <span class="n">r_or_p</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ts_method</span><span class="o">=</span><span class="s2">&quot;_telemetry&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                             <span class="n">results_folder</span><span class="o">=</span><span class="n">results_folder</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ph</span><span class="o">.</span><span class="n">metrics_jsonl</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_path_handler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path_handler</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Telemetry&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">path_handler</span><span class="p">,</span> <span class="s2">&quot;metrics_jsonl&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">disabled</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">rxn_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Telemetry&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        ForceCalculationResult with forces, energy, and force statistics</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>    <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>    <span class="n">atomic_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    <span class="k">if</span> <span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">atomic_numbers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mismatch: coords has </span><span class="si">{</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> atoms, &quot;</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>                        <span class="sa">f</span><span class="s2">&quot;atomic_numbers has </span><span class="si">{</span><span class="n">atomic_numbers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="k">if</span> <span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coords must have shape (N, 3), got </span><span class="si">{</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="c1"># ------------------------------- recording ------------------------------ #</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">enabled</span><span class="p">:</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="k">return</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>            <span class="n">record</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;rxn_id&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rxn_id</span><span class="p">)</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>            <span class="n">record</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;stage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>            <span class="n">record</span><span class="p">[</span><span class="s2">&quot;wall_ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># never break the pipeline</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[telemetry] write failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="n">ForceBackend</span><span class="o">.</span><span class="n">XTB</span><span class="p">:</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>        <span class="k">return</span> <span class="n">_compute_forces_xtb</span><span class="p">(</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>            <span class="n">coords</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">,</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a>            <span class="n">xtb_path</span><span class="o">=</span><span class="n">xtb_path</span><span class="p">,</span> <span class="n">solvent</span><span class="o">=</span><span class="n">solvent</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        <span class="p">)</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>    <span class="k">elif</span> <span class="n">backend</span> <span class="o">==</span> <span class="n">ForceBackend</span><span class="o">.</span><span class="n">ORCA_DFT</span><span class="p">:</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>        <span class="k">return</span> <span class="n">_compute_forces_orca_dft</span><span class="p">(</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>            <span class="n">coords</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">,</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>            <span class="n">orca_path</span><span class="o">=</span><span class="n">orca_path</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span> <span class="n">functional</span><span class="o">=</span><span class="n">functional</span><span class="p">,</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a>            <span class="n">solvent</span><span class="o">=</span><span class="n">solvent</span><span class="p">,</span> <span class="n">nprocs</span><span class="o">=</span><span class="n">nprocs</span><span class="p">,</span> <span class="n">maxcore</span><span class="o">=</span><span class="n">maxcore</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a>        <span class="p">)</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="k">elif</span> <span class="n">backend</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ForceBackend</span><span class="o">.</span><span class="n">PYSCF</span><span class="p">,</span> <span class="n">ForceBackend</span><span class="o">.</span><span class="n">PYSCF_GPU</span><span class="p">):</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="n">use_gpu</span> <span class="o">=</span> <span class="p">(</span><span class="n">backend</span> <span class="o">==</span> <span class="n">ForceBackend</span><span class="o">.</span><span class="n">PYSCF_GPU</span><span class="p">)</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="k">return</span> <span class="n">_compute_forces_pyscf</span><span class="p">(</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>            <span class="n">coords</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">,</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>            <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span> <span class="n">functional</span><span class="o">=</span><span class="n">functional</span><span class="p">,</span> <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">,</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>            <span class="n">solvent</span><span class="o">=</span><span class="n">solvent</span><span class="p">,</span> <span class="n">nprocs</span><span class="o">=</span><span class="n">nprocs</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="p">)</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown backend: </span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">tally</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">failed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Record a (total attempts, failed attempts) tally for ``component``.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">({</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">:</span> <span class="n">component</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">failed</span><span class="p">),</span> <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="n">meta</span><span class="p">})</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Record a single attempt (failed iff ``not ok``).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">failed</span><span class="o">=</span><span class="mi">0</span> <span class="k">if</span> <span class="n">ok</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>    <span class="nd">@contextmanager</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">):</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Time a code block. The yielded dict&#39;s ``meta`` may be mutated in-place</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">        to attach values discovered during the block (e.g. counts).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="n">handle</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">meta</span><span class="p">)}</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>            <span class="k">yield</span> <span class="n">handle</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>        <span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">({</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;timing&quot;</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">:</span> <span class="n">component</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">,</span> <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="n">handle</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;meta&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="p">)})</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="motsart.telemetry.Telemetry.for_rxn" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">for_rxn</span><span class="p">(</span><span class="n">rxn_id</span><span class="p">,</span> <span class="n">results_folder</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#motsart.telemetry.Telemetry.for_rxn" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build from a reaction id + results folder (resolves the JSONL path).</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/motsart/telemetry.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span>
+<span class="normal"><a href="#__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="k">def</span><span class="w"> </span><span class="nf">for_rxn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">results_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Telemetry&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Build from a reaction id + results folder (resolves the JSONL path).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="n">ph</span> <span class="o">=</span> <span class="n">PathHandler</span><span class="p">(</span><span class="n">rxn_id</span><span class="o">=</span><span class="n">rxn_id</span><span class="p">,</span> <span class="n">r_or_p</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ts_method</span><span class="o">=</span><span class="s2">&quot;_telemetry&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                         <span class="n">results_folder</span><span class="o">=</span><span class="n">results_folder</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ph</span><span class="o">.</span><span class="n">metrics_jsonl</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">rxn_id</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3299,39 +3070,107 @@ matrix helper used for IRC bond-change comparison.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="motsart.validator.utils.get_adj_matrix_from_mol" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">get_adj_matrix_from_mol</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">idx_to_mn</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<h4 id="motsart.telemetry.Telemetry.tally" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">tally</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">failed</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span></code>
 
-<a href="#motsart.validator.utils.get_adj_matrix_from_mol" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#motsart.telemetry.Telemetry.tally" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Returns adjacency matrix from a mol, sorted by Atom Map Number.</p>
+        <p>Record a (total attempts, failed attempts) tally for <code>component</code>.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>src/motsart/validator/utils.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-577">577</a></span>
-<span class="normal"><a href="#__codelineno-0-578">578</a></span>
-<span class="normal"><a href="#__codelineno-0-579">579</a></span>
-<span class="normal"><a href="#__codelineno-0-580">580</a></span>
-<span class="normal"><a href="#__codelineno-0-581">581</a></span>
-<span class="normal"><a href="#__codelineno-0-582">582</a></span>
-<span class="normal"><a href="#__codelineno-0-583">583</a></span>
-<span class="normal"><a href="#__codelineno-0-584">584</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-577" name="__codelineno-0-577"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_adj_matrix_from_mol</span><span class="p">(</span><span class="n">mol</span><span class="p">:</span> <span class="n">Chem</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="n">idx_to_mn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-578" name="__codelineno-0-578"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-0-579" name="__codelineno-0-579"></a><span class="sd">    Returns adjacency matrix from a mol, sorted by Atom Map Number.</span>
-<a id="__codelineno-0-580" name="__codelineno-0-580"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-581" name="__codelineno-0-581"></a>    <span class="n">mol</span><span class="o">.</span><span class="n">UpdatePropertyCache</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-0-582" name="__codelineno-0-582"></a>    <span class="k">if</span> <span class="n">idx_to_mn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-583" name="__codelineno-0-583"></a>        <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">RenumberAtoms</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">idx_to_mn</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<a id="__codelineno-0-584" name="__codelineno-0-584"></a>    <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetAdjacencyMatrix</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+              <summary>Source code in <code>src/motsart/telemetry.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-87">87</a></span>
+<span class="normal"><a href="#__codelineno-0-88">88</a></span>
+<span class="normal"><a href="#__codelineno-0-89">89</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="k">def</span><span class="w"> </span><span class="nf">tally</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">failed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Record a (total attempts, failed attempts) tally for ``component``.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">({</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">:</span> <span class="n">component</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">failed</span><span class="p">),</span> <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="n">meta</span><span class="p">})</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
 
 </div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="motsart.telemetry.Telemetry.event" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">event</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">ok</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span></code>
+
+<a href="#motsart.telemetry.Telemetry.event" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Record a single attempt (failed iff <code>not ok</code>).</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/motsart/telemetry.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-91">91</a></span>
+<span class="normal"><a href="#__codelineno-0-92">92</a></span>
+<span class="normal"><a href="#__codelineno-0-93">93</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Record a single attempt (failed iff ``not ok``).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">tally</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">failed</span><span class="o">=</span><span class="mi">0</span> <span class="k">if</span> <span class="n">ok</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="motsart.telemetry.Telemetry.timer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">timer</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span></code>
+
+<a href="#motsart.telemetry.Telemetry.timer" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Time a code block. The yielded dict's <code>meta</code> may be mutated in-place
+to attach values discovered during the block (e.g. counts).</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/motsart/telemetry.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="nd">@contextmanager</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="k">def</span><span class="w"> </span><span class="nf">timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">):</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time a code block. The yielded dict&#39;s ``meta`` may be mutated in-place</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">    to attach values discovered during the block (e.g. counts).&quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    <span class="n">handle</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">meta</span><span class="p">)}</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        <span class="k">yield</span> <span class="n">handle</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>    <span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">({</span><span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;timing&quot;</span><span class="p">,</span> <span class="s2">&quot;component&quot;</span><span class="p">:</span> <span class="n">component</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">,</span> <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="n">handle</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;meta&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="p">)})</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
 
 
 
@@ -3395,10 +3234,10 @@ matrix helper used for IRC bond-change comparison.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
